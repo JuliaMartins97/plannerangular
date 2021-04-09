@@ -1,0 +1,64 @@
+<div class="tabela">
+<div class="card"  >
+<div class="card-header" >
+<div class="float-left">
+<h4> Eventos </h4>
+</div>
+<div class="float-right">
+    <button type="button" class="btn btn-primary" [routerLink]="['novo']">Novo Evento</button>
+    {{ '' }}
+    <button type="button" class="btn btn-secondary" (click)="onRefresh()">Atualizar</button>
+
+</div>
+</div>
+<div class="card-body">
+<table class="table table-hover" *ngIf="eventos$ | async as eventos; else loadingError">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Evento</th>
+            <th>Data</th>
+            <th>Hora</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let evento of eventos">
+            <td>{{ evento.id }}</td>
+            <td>{{ evento.nomeevento }}</td>
+            <td>{{ evento.data }}</td>
+            <td>{{ evento.hora }}</td>
+            <td>
+                <span class="float-right">
+                    <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(evento.id)">
+                        Atualizar
+                    </button>
+                    {{ ' ' }}
+                    <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(evento)">
+                        Remover
+                    </button>
+
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<ng-template #loadingError>
+    <div *ngIf="error$ | async; else loadingNoError">
+        Erro ao carregar eventos. Tente novamente mais tarde.
+    </div>
+    <ng-template #loadingNoError>
+        <span>Carregando Eventos...</span>
+    </ng-template>
+</ng-template>
+</div>
+</div>
+
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Oie, você tem certeza que deseja excluir esse evento?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Não</button>
+  </div>
+</ng-template>
