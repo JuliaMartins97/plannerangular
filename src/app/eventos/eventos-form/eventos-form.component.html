@@ -13,8 +13,55 @@
       Por favor informe o nome do evento.
     </div>
   </div>
+
+  <div class="col-sm-12">
+    <label for="data" class="form-label">Data do Evento</label>
+    <input
+    type="date"
+    class="form-control"
+    id="validationCustom01"
+    placeholder="Data do Evento"
+    formControlName="data"
+    [ngClass]="{ 'is-invalid': submitted && hasError('data')}"
+    >
+    <div class="invalid-feedback">
+      Por favor informe a data do evento.
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <label for="hora" class="form-label">Hora do Evento</label>
+    <input
+    type="time"
+    class="form-control"
+    id="validationCustom01"
+    placeholder="Hora do Evento"
+    formControlName="hora"
+    [ngClass]="{ 'is-invalid': submitted && hasError('hora')}"
+    >
+    <div class="invalid-feedback">
+      Por favor informe a hora do evento.
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <label for="local" class="form-label">Local do Evento</label>
+    <input
+    type="text"
+    class="form-control"
+    id="validationCustom01"
+    placeholder="Local do Evento"
+    formControlName="local"
+    [ngClass]="{ 'is-invalid': submitted && hasError('local')}"
+    >
+    <div class="invalid-feedback">
+      Por favor informe o local do evento.
+    </div>
+  </div>
+
+
   <div>
-    <div style="margin-top:10px">
+    <div class= "botoes" style="margin-top:10px">
     <button type="sumit" class="btn btn-primary" (click)="OnSubmit()">Salvar</button>
     <button type="button" class="btn btn-default" (click)="OnCancel()">Cancelar</button>
     </div>

@@ -34,8 +34,9 @@ export class EventosFormComponent implements OnInit {
     this.form = this.fb.group({
       id: [evento.id],
       nomeevento: [evento.nomeevento, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
-      data: [evento.data],
-      hora: [evento.hora]
+      data: [evento.data, [Validators.required]],
+      hora: [evento.hora, [Validators.required]],
+      local: [evento.local, [Validators.required, Validators.minLength(3), Validators.maxLength(250)]]
     });
 
     //  this.route.params
